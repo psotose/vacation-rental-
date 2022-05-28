@@ -1,0 +1,2 @@
+class Cabinet < ApplicationRecord
+end
