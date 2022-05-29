@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_29_151716) do
+ActiveRecord::Schema.define(version: 2022_05_29_205453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cabin_pics", force: :cascade do |t|
+    t.string "pictures"
+    t.bigint "cabin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cabin_id"], name: "index_cabin_pics_on_cabin_id"
+  end
 
   create_table "cabins", force: :cascade do |t|
     t.string "name"
@@ -33,4 +41,5 @@ ActiveRecord::Schema.define(version: 2022_05_29_151716) do
     t.string "google_refresh_token"
   end
 
+  add_foreign_key "cabin_pics", "cabins"
 end
