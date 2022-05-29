@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'cabinets/index'
-  root 'cabinets#index'
+  get 'cabins/index'
+  root 'cabins#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

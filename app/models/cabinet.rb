@@ -1,2 +1,0 @@
-class Cabinet < ApplicationRecord
-end
