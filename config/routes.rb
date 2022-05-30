@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Routes for Google authentication
   get 'auth/google_oauth2/callback', to: 'sessions#googleAuth'
   get 'auth/failure', to: redirect('/')
-  resources :cabins , except: [:new, :edit, :create, :update, :destroy] do
+  resources :cabins , except: [:new, :show, :edit, :create, :update, :destroy] do
     resources :reservations, except: [:index, :show, :edit, :update]
   end
   # get '/cabins', to: 'cabins#index'

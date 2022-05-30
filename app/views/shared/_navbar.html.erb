@@ -7,11 +7,11 @@
           <img src="<%= image_url(asset_path('user-avatar.svg'))%>" class="img-dropdown"> 
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item" href="#"><%= link_to "Log In with Google", '/auth/google_oauth2' %></a></li>
-          <li><a class="dropdown-item" href="#">Cabaña 1</a></li>
-          <li><a class="dropdown-item" href="#">Cabaña 2</a></li>
-          <li><a class="dropdown-item" href="#">Cabaña 3</a></li>
-          <li><a class="dropdown-item" href="#">Formulario contacto</a></li>
+          <li><a class="dropdown-item" href="#"><%= link_to 'Log In with Google', '/auth/google_oauth2' %></a></li>
+          <li><a class="dropdown-item" href="#"><%= link_to 'Cabaña 1', new_cabin_reservation_path(1) %></a></li>
+          <li><a class="dropdown-item" href="#"><%= link_to 'Cabaña 2', new_cabin_reservation_path(2) %></a></li>
+          <li><a class="dropdown-item" href="#"><%= link_to 'Cabaña 3', new_cabin_reservation_path(3) %></a></li>
+          <li><a class="dropdown-item" href="#"><%= link_to 'Formulario contacto', contact_form_path %></a></li>
         </ul>
       </span> 
     </div>

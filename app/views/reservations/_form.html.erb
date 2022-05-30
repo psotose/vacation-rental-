@@ -2,7 +2,6 @@
   <% if reservation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
-
       <ul>
       <% reservation.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,33 +9,65 @@
       </ul>
     </div>
   <% end %>
-<div class="row">
-  <div class="column">
-    <div class="field">
-      <%= form.label :start_time %>
-      <%= form.datetime_select :start_time %>
-    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 35rem;">
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <% @cabin.cabin_pics.each_with_index do |cabin_pic, idx|%>
+                <div class="carousel-item <%= ' active' if idx == 0 %>">
+                  <img src=<%= cabin_pic.pictures %> class="card-img-top w-100" alt="Vista de la cabaña">
+                </div>
+              <% end %>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= @cabin.name %></h5>
+            <p class="card-text">
+              <%= @cabin.description%>
+            </p>
+            <p class="card-text text-center">Disponible desde 25/06/2022</p>
+          </div>
+          <div class="card-footer bg-white text-end ">
+            <small class="fw-bold ">CLP <%= @cabin.price %> por noche</small>
+          </div>
+        </div>
+      </div>
 
-    <div class="field">
-      <%= form.label :end_time %>
-      <%= form.datetime_select :end_time %>
-    </div>
+      <div class="col">
+        <div class="field">
+          <%= form.label :start_time %>
+          <%= form.datetime_select :start_time %>
+        </div>
 
-    <div class="field">
-      <%= form.label :cabin_id %>
-      <%= form.text_field :cabin_id %>
-    </div>
+        <div class="field">
+          <%= form.label :end_time %>
+          <%= form.datetime_select :end_time %>
+        </div>
 
-    <div class="field">
-      <%= form.label :user_id %>
-      <%= form.text_field :user_id %>
-    </div>
+        <div class="field">
+          <%= form.label :cabin_id %>
+          <%= form.text_field :cabin_id %>
+        </div>
 
-    <div class="actions">
-      <%= form.submit %>
+        <div class="field">
+          <%= form.label :user_id %>
+          <%= form.text_field :user_id %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      </div>
     </div>
-    </div>
-  <% end %>
-  <div class="column">
-  </div> 
-</div>  
+  </div>  
+<% end %>
