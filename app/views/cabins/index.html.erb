@@ -1,6 +1,6 @@
 <div class="container my-5" style="width: 80%;">
   <% @cabins.each do |cabin|%>
-  <div class="card my-5" >
+  <div class="card my-5 cabin-card" data-id=<%=cabin.id%>>
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <% cabin.cabin_pics.each_with_index do |cabin_pic, idx|%>
@@ -31,3 +31,15 @@
   </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  const cards = document.getElementsByClassName("cabin-card");
+  console.log('cards',cards);
+  for (let i = 0; i < cards?.length; i++) {
+    const cardId = cards[i].getAttribute("data-id");
+    console.log('card id',cardId);
+    cards[i].onclick = () => {
+      location.href = `http://localhost:3000/cabins/${cardId}/reservations/new`; 
+    };
+  }  
+</script>

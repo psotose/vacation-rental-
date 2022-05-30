@@ -3,6 +3,10 @@ class CabinsController < ApplicationController
     @cabins = Cabin.all
   end
 
+  def show
+    @cabin = Cabin.find(params[:id])
+  end
+
   def contact_form
   end  
 end
