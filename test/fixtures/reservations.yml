@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: 2022-05-30 15:19:22
+  end_time: 2022-05-30 15:19:22
+  cabin: one
+  user: one
+
+two:
+  start_time: 2022-05-30 15:19:22
+  end_time: 2022-05-30 15:19:22
+  cabin: two
+  user: two
