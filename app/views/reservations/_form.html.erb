@@ -44,29 +44,31 @@
       </div>
 
       <div class="col">
-        <div class="field">
-          <%= form.label :start_time %>
-          <%= form.datetime_select :start_time %>
-        </div>
+        <form>
+          <div class="mb-3">
+            <%= form.label :start_time %>
+            <%= form.datetime_select :start_time %>
+          </div>
 
-        <div class="field">
-          <%= form.label :end_time %>
-          <%= form.datetime_select :end_time %>
-        </div>
+          <div class="mb-3">
+            <%= form.label :end_time %>
+            <%= form.datetime_select :end_time %>
+          </div>
 
-        <div class="field">
-          <%= form.label :cabin_id %>
-          <%= form.text_field :cabin_id %>
-        </div>
+          <div class="mb-3">
+            <%= form.label :Nombre, class:"form-label" %>
+            <%= form.text_field :user_name, class:"form-control" %>
+          </div>
 
-        <div class="field">
-          <%= form.label :user_id %>
-          <%= form.text_field :user_id %>
-        </div>
+          <div class="mb-3">
+            <%= form.label :Email, class:"form-label" %>
+            <%= form.text_field :user_email, class:"form-control" %>
+          </div>
 
-        <div class="actions">
-          <%= form.submit %>
-        </div>
+          <div class="actions mb-3 text-center">
+            <%= form.submit class:"btn btn-info" %>
+          </div>
+        </form>
       </div>
     </div>
   </div>  
