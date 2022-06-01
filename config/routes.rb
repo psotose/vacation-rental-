@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'contacts/new', to: 'contacts#new', as: :contact_form
-  get 'contacts/create', to: 'contacts#create'
+  resources :contacts, except: [:edit, :update, :destroy]
+
   # Routes for Google authentication
   get 'auth/google_oauth2/callback', to: 'sessions#googleAuth'
   get 'auth/failure', to: redirect('/')
