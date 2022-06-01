@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'contacts/new', to: 'contacts#new', as: :contact_form
+  get 'contacts/create', to: 'contacts#create'
   # Routes for Google authentication
   get 'auth/google_oauth2/callback', to: 'sessions#googleAuth'
   get 'auth/failure', to: redirect('/')
@@ -7,6 +9,5 @@ Rails.application.routes.draw do
     resources :reservations, except: [:index, :edit, :update]
   end
 
-  get '/contact_form', to: 'cabins#contact_form'
   root 'cabins#index'
 end

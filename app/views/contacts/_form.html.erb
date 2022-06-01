@@ -1,0 +1,39 @@
+<div class="container">
+  <h1 class="text-center py-5">Por favor dejanos tus datos de contacto para enviarte los detalles de la reserva a tu email</h1>
+  <div class="container px-5">
+    <%= form_with(model: contact, local: true) do |form| %>
+      <% if contact.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(contact.errors.count, "error") %> no se ha podido enviar el mail por:</h2>
+        <ul>
+        <% contact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+        </div>
+      <% end %>
+      <form>
+        <div class="mb-3">
+          <%= form.label :'Nombre', class:"form-label" %>
+          <%= form.text_field :name, class:"form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :'Rut', class:"form-label" %>
+          <%= form.text_field :rut, class:"form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :Email, class:"form-label" %>
+          <%= form.email_field :email, class:"form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :'Mensaje', class:"form-label" %>
+          <%= form.text_area :message, class:"form-control" %>
+        </div>
+        <div class="mb-3 text-center">
+          <%= form.submit 'Enviar mi reserva por mail', class:"btn btn-info" %>
+        </div>  
+      </form>
+    <% end %>
+  </div>
+  <h3 class="text-center py-5">Gracias por elegirnos</h5>
+</div>
