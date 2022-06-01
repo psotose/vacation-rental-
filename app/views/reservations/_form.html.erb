@@ -1,4 +1,5 @@
-<%= form_with(model: [@cabin, Reservation.new], local: true) do |form| %>
+<div id='cabin-reservation-dates' data-unavailable="<%= @cabin.unavailable_dates.to_json %>">
+<%= simple_form_for([@cabin, Reservation.new], local: true) do |form| %>
   <% if reservation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
@@ -46,30 +47,57 @@
       <div class="col">
         <form>
           <div class="mb-3">
-            <%= form.label :start_time %>
-            <%= form.datetime_select :start_time %>
+            <%= form.label :'Fecha inicio de reserva', class:"form-label" %>
+            <%= form.text_field :start_time, as: :string, class:"form-control", 'data-provide':'datepicker' %>
           </div>
 
           <div class="mb-3">
-            <%= form.label :end_time %>
-            <%= form.datetime_select :end_time %>
+            <%= form.label :'Fecha fin de reserva', class:"form-label" %>
+            <%= form.text_field :end_time, as: :string, class:"form-control", 'data-provide':'datepicker' %>
           </div>
-
           <div class="mb-3">
             <%= form.label :Nombre, class:"form-label" %>
-            <%= form.text_field :user_name, class:"form-control" %>
+            <%= form.text_field :name, class:"form-control" %>
           </div>
 
           <div class="mb-3">
             <%= form.label :Email, class:"form-label" %>
-            <%= form.text_field :user_email, class:"form-control" %>
+            <%= form.email_field :email, class:"form-control" %>
           </div>
 
           <div class="actions mb-3 text-center">
-            <%= form.submit class:"btn btn-info" %>
+            <%= form.submit 'Reservar', class:"btn btn-info" %>
           </div>
         </form>
       </div>
     </div>
   </div>  
 <% end %>
+
+<script>
+  const startDateInput = document.getElementById('reservation_start_time');
+  const endDateInput = document.getElementById('reservation_end_time');
+
+  if (startDateInput) {
+  const unavailableDates = JSON.parse(document.querySelector('#cabin-reservation-dates').dataset.unavailable)
+  endDateInput.disabled = true
+
+  flatpickr(startDateInput, {
+    minDate: "today",
+    disable: unavailableDates,
+    dateFormat: "Y-m-d",
+  });
+
+
+  startDateInput.addEventListener("change", (e) => {
+    if (startDateInput != "") {
+      endDateInput.disabled = false
+    }
+    flatpickr(endDateInput, {
+      minDate: e.target.value,
+      disable: unavailableDates,
+      dateFormat: "Y-m-d"
+      });
+    })
+  };
+</script>
