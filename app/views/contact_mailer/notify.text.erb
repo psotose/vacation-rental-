@@ -1,0 +1,12 @@
+<h1>Mensaje de contacto</h1>
+
+<h2>Fecha de envio: <%= Time.now.strftime("%d/%m/%Y %H:%M") %></h2>
+
+<p><strong>Nombre: </strong><%= @contact&.name %></p>
+
+<p><strong>Email: </strong><%= @contact&.email %></p>
+
+<p><strong>Rut: </strong><%= @contact&.rut %></p>
+
+<p><strong>Mensaje:</strong></p>
+<p><%= @contact&.message %></p>
