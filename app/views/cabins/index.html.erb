@@ -23,7 +23,7 @@
       <p class="card-text">
         <%= truncate cabin.description, :length => 150%>
       </p>
-      <p class="card-text text-center">Disponible desde 25/06/2022</p>
+      <p class="card-text text-center">Disponible desde <%= cabin.first_available_date%></p>
     </div>
     <div class="card-footer bg-white text-end ">
       <small class="fw-bold ">CLP <%= cabin.price %> por noche</small>
