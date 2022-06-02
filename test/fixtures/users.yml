@@ -2,10 +2,9 @@
 
 one:
   name: MyString
-  email: MyString
-  rut: MyString
+  email: 1@gmail.cl
 
 two:
   name: MyString
-  email: MyString
-  rut: MyString
+  email: 2@gmail.cl
+
