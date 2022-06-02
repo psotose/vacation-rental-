@@ -6,7 +6,7 @@ class ReservationsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit reservations_url
+    visit user_reservations_url
     assert_selector "h1", text: "Reservations"
   end
 
