@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  ActiveAdmin.routes(self)
+  namespace :admin do
+    resources :cabins do
+      resources :reservations 
+    end
+  end
   resources :contacts, except: [:edit, :update, :destroy]
   get 'contacts/new', to: 'contacts#new', as: :contact_form
 
