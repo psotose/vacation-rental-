@@ -12,6 +12,9 @@
           <li><a class="dropdown-item" href="#"><%= link_to 'Cabaña 2', new_cabin_reservation_path(2) %></a></li>
           <li><a class="dropdown-item" href="#"><%= link_to 'Cabaña 3', new_cabin_reservation_path(3) %></a></li>
           <li><a class="dropdown-item" href="#"><%= link_to 'Formulario contacto', contact_form_path %></a></li>
+          <% if logged_in? %>
+            <li><a class="dropdown-item" href="#"><%= link_to 'Mis Reservas', user_reservations_url(current_user.id) %></a></li>
+          <% end %>
         </ul>
       </span> 
     </div>

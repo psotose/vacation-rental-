@@ -1,10 +1,10 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: %i[ show destroy ]
-  before_action :set_cabin
+  before_action :set_cabin, except: %i[index destroy]
 
   # GET /reservations or /reservations.json
   def index
-    @reservations = Reservation.all
+    @reservations = Reservation.where(email: current_user.email)
   end
 
   # GET /reservations/1 or /reservations/1.json
@@ -38,7 +38,7 @@ class ReservationsController < ApplicationController
     @reservation.destroy
 
     respond_to do |format|
-      format.html { redirect_to reservations_url, notice: "Reservation was successfully destroyed." }
+      format.html { redirect_to user_reservations_url(current_user.id), notice: "Reservation was successfully destroyed." }
       format.json { head :no_content }
     end
   end

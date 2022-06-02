@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :cabins , except: [:new, :show, :edit, :create, :update, :destroy] do
     resources :reservations, except: [:index, :edit, :update]
   end
+  resources :user , except: [:new, :show, :edit, :create, :update] do
+    resources :reservations, except: [:new, :show, :edit, :create, :update]
+  end  
 
   root 'cabins#index'
 end
