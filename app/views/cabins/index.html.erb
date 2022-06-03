@@ -1,7 +1,8 @@
+
 <div class="container my-5" style="width: 80%;">
   <% @cabins.each do |cabin|%>
-  <div class="card my-5 cabin-card" data-id=<%=cabin.id%>>
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="card my-5 cabin-card" data-id=<%=cabin.id%> cabin-reservation-url=<%=new_cabin_reservation_url(cabin.id)%>>
+    <div id="carouselExampleControls<%=cabin.id%>" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <% cabin.cabin_pics.each_with_index do |cabin_pic, idx|%>
           <div class="carousel-item <%= ' active' if idx == 0 %>">
@@ -9,11 +10,11 @@
           </div>
         <% end %>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls<%=cabin.id%>" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls<%=cabin.id%>" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
@@ -23,7 +24,7 @@
       <p class="card-text">
         <%= truncate cabin.description, :length => 150%>
       </p>
-      <p class="card-text text-center">Disponible desde <%= cabin.first_available_date%></p>
+      <p class="card-text text-center">Disponible desde <%= cabin.first_available_date.to_time.strftime('%d-%m-%Y') %></p>
     </div>
     <div class="card-footer bg-white text-end ">
       <small class="fw-bold ">CLP <%= cabin.price %> por noche</small>
@@ -34,12 +35,23 @@
 
 <script type="text/javascript">
   const cards = document.getElementsByClassName("cabin-card");
-  console.log('cards',cards);
   for (let i = 0; i < cards?.length; i++) {
     const cardId = cards[i].getAttribute("data-id");
-    console.log('card id',cardId);
+    const url = cards[i].getAttribute("cabin-reservation-url");   
     cards[i].onclick = () => {
-      location.href = `http://localhost:3000/cabins/${cardId}/reservations/new`; 
+      location.href = url; 
     };
-  }  
+  }
+  const prevButtons = document.getElementsByClassName("carousel-control-prev");
+  for (let i = 0; i < prevButtons?.length; i++) {
+    prevButtons[i].onclick = (e) => {
+      e.stopPropagation();   
+    };
+  }
+  const nextButtons = document.getElementsByClassName("carousel-control-next");
+  for (let i = 0; i < nextButtons?.length; i++) {
+    nextButtons[i].onclick = (e) => {
+      e.stopPropagation();   
+    };
+  }
 </script>

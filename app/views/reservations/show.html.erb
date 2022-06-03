@@ -1,23 +1,20 @@
 <p id="notice"><%= notice %></p>
+<div class="container my-5 text-center">
+  <h2 class="my-3">Detalles de tu reserva</h2>
+  <div class="my-3">
+    <strong >Fecha inicio reserva:</strong>
+    <%= @reservation.start_time.to_time.strftime('%d-%B-%Y') %>
+  </div>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @reservation.start_time %>
-</p>
+  <div class="my-3">
+    <strong>Fecha fin reserva:</strong>
+    <%= @reservation.end_time.to_time.strftime('%d-%m-%Y') %>
+  </div>
 
-<p>
-  <strong>End time:</strong>
-  <%= @reservation.end_time %>
-</p>
+  <div class="my-3">
+    <strong>Cabaña:</strong>
+    <%= @reservation.cabin.name %>
+  </div>
 
-<p>
-  <strong>Cabin:</strong>
-  <%= @reservation.cabin %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @reservation.user %>
-</p>
-
-<%= link_to 'Back', root_path %>
+  <%= link_to 'Voler a la vista principal', root_path , class:"btn btn-info text-decoration-none"%>
+</div>
