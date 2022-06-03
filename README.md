@@ -8,12 +8,11 @@ Observación: en Heroku no esta configurado el servidor stmp.
 
 Para testear el envío de correos de manera local se utilizó un servidor smtp gratuito de prueba `Mailtrap`
 
-######Casilla mailtrap
 ![alt text][proof]
 
 [proof]: /inbox_mailtrap.png "Casilla mailtrap"
 
-######Diagrama de Base de datos
+
 ![alt text][logic]
 
 [logic]: /diagrama_erd.png "Diagrama lógico"
