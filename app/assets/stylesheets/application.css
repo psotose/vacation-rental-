@@ -15,16 +15,11 @@
  *= require_self
  */
 
-nav {
-  background-color: #9bfae0;
-}
+
 
 body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
-}
-
-footer {
-  background-color: #9bfae0;
+  min-height: 100vh;
 }
 
 .main-container {
