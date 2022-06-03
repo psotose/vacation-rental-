@@ -9,7 +9,8 @@ class Cabin < ApplicationRecord
   end
 
   def first_available_date
-    last_end_time = Reservation.order('end_time DESC').first.end_time
+    last_end_time = Reservation.order('end_time DESC').first&.end_time
+    return Date.today if last_end_time.blank?
     list_unavailable_dates = unavailable_dates
     first_available_d = nil
     (Date.today..last_end_time).each do |date|
